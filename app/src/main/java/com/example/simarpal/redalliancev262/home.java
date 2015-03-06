@@ -22,7 +22,8 @@ import android.widget.TextView;
 
 
 public class home extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks , scoutingFragment.OnFragmentInteractionListener , pitScouting.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks , scoutingFragment.OnFragmentInteractionListener
+        , pitScouting.OnFragmentInteractionListener , viewFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -69,6 +70,12 @@ public class home extends ActionBarActivity
         {
             fragmentManager.beginTransaction()
                     .replace(R.id.container, pitScouting.newInstance("3","4"))
+                    .commit();
+        }
+        if(position == 3)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, viewFragment.newInstance("5", "6"))
                     .commit();
         }
 

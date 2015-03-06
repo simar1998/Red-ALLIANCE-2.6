@@ -253,6 +253,7 @@ public class scoutingFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                
                 //END OF SWITCH
 
             }
@@ -354,6 +355,55 @@ public class scoutingFragment extends Fragment {
             writer.write("Rating = " + ratingRobot);
             writer.close();
             MessageBox("File saved");
+            teamNumberText.setText("") ;
+            matchNumberText.setText("") ;
+            scoutNameText.setText("");
+            landfillTotesText.setText("");
+            upsideDownTotesText .setText("");
+            totesFromHP .setText("");
+            platformText.setText("") ;
+
+            //Number Picker Objects
+            cylinderMoveNP.setValue(0);
+            totesMovedNP.setValue(0) ;
+            cylinderOffStep.setValue(0);
+            totesOffStep.setValue(0) ;
+            noodlesCylinderNp.setValue(0);
+            noodlesOpponentNp.setValue(0);
+
+            //Toggle button code
+            toteSetToggle.setChecked(false);
+            botZoneToggle.setChecked(false);
+
+            //CheckBox Objects
+            longCheckBox.setChecked(false);
+            wideCheckBox.setChecked(false);
+
+            //Switch object
+            herdLitterSwitch.setChecked(false);
+
+            robotRating.setRating(0);
+
+            teamNumberDouble = "";//Stores the value for the user input of the team Number :INPUT METHOD = EditText
+            matchNumberDouble = "";//Stores the value for the user input of the matchNumber :INPUT METHOD = EditText
+            totesFromLandfillDouble = "";//Stores the value for the user input of the totes from the landfill :INPUT METHOD = EditText
+            upsideDownTotesDouble = "";//Stores the value for the user input of the upside down totes :INPUT METHOD = EditText
+            totesHPDouble = "";//Stores the value for the user input of the totes from the Human Player :INPUT METHOD = EditText
+            numberOverPlatformDouble = "";//Stores the value for the user input of the number of times over platform :INPUT METHOD = EditText
+            cylindersMovedDouble = 0;//Stores the values for the user input of the cylinders moved :INPUT METHOD = NumberPicker
+            totesMovedDouble = 0;//Stores the values for the user input of the totes moved :INPUT METHOD = NumberPicker
+            offStepCylindersDouble = 0;//Stores the values of the user input of the off step cylinders :INPUT METHOD = NumberPicker
+            offStepTotesDouble = 0;//Stores the values of the user input of the off step totes :INPUT METHOD = NumberPicker
+            noodlesCylinderDouble = 0;//Stores the values of the user input of the noodles in  the cylinder :INPUT METHOD = NumberPicker
+            noodlesOpponentDouble = 0;//Stores the values of the user input of the noodles in opponent zone;:INPUT METHOD = NumberPicker
+            //booleans
+            wideBool = false;//Unknown context :INPUT METHOD = CheckBox
+            longBool = false;//Unknown context :INPUT METHOD = CheckBox
+            botZoneBool = false;//Stores the value of the bot in zone :INPUT METHOD = ToggleButton
+            toteSetBool = false;//Stores the value of the totes set :INPUT METHOD = ToggleButton
+            herdLitterBool = false;//Stores the value of the herd litter option :INPUT METHOD = Switch
+            //Constants
+            scoutNameString = "";//Stores the value of the user input of the scout number
         } else {
             MessageBox("Please enter team Number and match number");
         }

@@ -103,7 +103,7 @@ public class pitScouting extends Fragment {
     Boolean pitLitterInContainer = false;
     Boolean pitRightContainers = false;
     Boolean pitHerdLitter = false;
-    Boolean pitThrowLitter = false;
+    boolean pitThrowLitter = false;
     Boolean pitLitterLandfill = false;
     Boolean coopOneThree = false;
     Boolean coopThreeOne = false;
@@ -178,6 +178,7 @@ public class pitScouting extends Fragment {
           pitLitterLandfillBool = (Switch)  getView().findViewById(R.id.litterLandfillPIT);
           pitOneOnThreeBool = (Switch)  getView().findViewById(R.id.oneToteOnThreePIT);
           pitThreeOnOneBool = (Switch)  getView().findViewById(R.id.threeOnOnePit);
+          pitThrowLitterBool= (Switch) getView().findViewById(R.id.throwLitterPIT);
 
         //Toggle button
           pitStrafeToggleBool = (ToggleButton)  getView().findViewById(R.id.strafeTogglePIT);
@@ -224,14 +225,44 @@ public class pitScouting extends Fragment {
                 Boolean[] boolArray = {
                         pitTotesPick,pitPushTotes, pitRightTotes ,pitLandfillTotes,pitHPfeed, pitLitterInContainer , pitRightContainers
                 , pitHerdLitter ,pitThrowLitter,pitLitterLandfill,coopOneThree ,coopThreeOne };
-                for(int i = 0; i<12; i++)
-                {
-
-                    if(switchArray[i].isChecked())
-                    {
-                        boolArray[i] = true;
-                    }else boolArray[i] = false;
-                }
+                    if (switchArray[0].isChecked()) {
+                        boolArray[0] = true;
+                    } else boolArray[0] = false;
+                if (switchArray[1].isChecked()) {
+                    boolArray[1] = true;
+                } else boolArray[1] = false;
+                if (switchArray[2].isChecked()) {
+                    boolArray[2] = true;
+                } else boolArray[2] = false;
+                if (switchArray[3].isChecked()) {
+                    boolArray[3] = true;
+                } else boolArray[3] = false;
+                if (switchArray[4].isChecked()) {
+                    boolArray[4] = true;
+                } else boolArray[4] = false;
+                if (switchArray[5].isChecked()) {
+                    boolArray[5] = true;
+                } else boolArray[5] = false;
+                if (switchArray[6].isChecked()) {
+                    boolArray[6] = true;
+                } else boolArray[6] = false;
+                if (switchArray[7].isChecked()) {
+                    boolArray[7] = true;
+                } else boolArray[7] = false;
+                if (switchArray[8].isChecked()) {
+                    boolArray[8] = true;
+                } else boolArray[8] = false;
+                if (switchArray[9].isChecked()) {
+                    boolArray[9] = true;
+                } else boolArray[9] = false;
+                if (switchArray[10].isChecked()) {
+                    boolArray[10] = true;
+                } else boolArray[10] = false;
+                if (switchArray[11].isChecked()) {
+                    boolArray[11] = true;
+                } else boolArray[11] = false;
+                
+                
                 if(pitSetBool.isChecked())
                 {
                     pitSet = true;
@@ -247,6 +278,7 @@ public class pitScouting extends Fragment {
                 }
             }
         };
+
 
         View.OnClickListener cameraLaunch = new View.OnClickListener()
         {
@@ -304,6 +336,10 @@ public class pitScouting extends Fragment {
         }
 
 
+    }
+    public void isCheckedMethod(Switch s)
+    {
+        s.isChecked();
     }
 
     @Override
@@ -372,31 +408,31 @@ public class pitScouting extends Fragment {
         }
 
         if (!pitTeamName.isEmpty() && !pitScoutName.isEmpty()) {
-            writer.write("Team Number = " + pitTeamName + "\n");
-            writer.write("Scout Name = " + pitScoutName + "\n");
-            writer.write("Preferred Speed = " + pitSpeed + "\n");
-            writer.write("Drive Train = " + pitDriveType + "\n");
-            writer.write("Orientation = " + pitOrientation + "\n");
-            writer.write("Autonomous = " + pitAutonomous + "\n");
-            writer.write("Stack Height = " + pitStackHeight + "\n");
-            writer.write("Container Height = " + pitContainerHeight + "\n");
-            writer.write("Litter in container how = " + pitLitterInContainerHowString + "\n");
-            writer.write("Strafe = " + pitStrafe + "\n");
-            writer.write("Over Platform = " + pitOverPlatform + "\n");
-            writer.write("Can pick totes up = " + pitTotesPick + "\n");
-            writer.write("can push totes = " + pitPushTotes + "\n");
-            writer.write("Can right totes = " + pitRightTotes + "\n");
-            writer.write("Landfill totes = " + pitLandfillTotes + "\n");
-            writer.write("HP FEED = " + pitHPfeed + "\n");
-            writer.write("Can put litter in container = " + pitLitterInContainerHowString + "\n");
-            writer.write("Can right container = " + pitRightContainers + "\n");
-            writer.write("Herd litter = " + pitHerdLitter + "\n");
-            writer.write("Can throw litter = " + pitThrowLitter + "\n");
-            writer.write("Can litter landfill = " + pitLitterLandfill + "\n");
-            writer.write("Can put one tote on three = " + coopOneThree + "\n");
-            writer.write("Can put three totes on one = " + coopThreeOne + "\n");
-            writer.write("Set = " + pitSet + "\n");
-            writer.write("Stack = " + pitStack + "\n");
+            writer.write("*Team Number = " + pitTeamName + "\n");
+            writer.write("*Scout Name = " + pitScoutName + "\n");
+            writer.write("*Preferred Speed = " + pitSpeed + "\n");
+            writer.write("*Drive Train = " + pitDriveType + "\n");
+            writer.write("*Orientation = " + pitOrientation + "\n");
+            writer.write("*Autonomous = " + pitAutonomous + "\n");
+            writer.write("*Stack Height = " + pitStackHeight + "\n");
+            writer.write("*Container Height = " + pitContainerHeight + "\n");
+            writer.write("*Litter in container how = " + pitLitterInContainerHowString + "\n");
+            writer.write("*Strafe = " + pitStrafe + "\n");
+            writer.write("*Over Platform = " + pitOverPlatform + "\n");
+            writer.write("*Can pick totes up = " + pitTotesPick + "\n");
+            writer.write("*can push totes = " + pitPushTotes + "\n");
+            writer.write("*Can right totes = " + pitRightTotes + "\n");
+            writer.write("*Landfill totes = " + pitLandfillTotes + "\n");
+            writer.write("*HP FEED = " + pitHPfeed + "\n");
+            writer.write("*Can put litter in container = " + pitLitterInContainerHowString + "\n");
+            writer.write("*Can right container = " + pitRightContainers + "\n");
+            writer.write("*Herd litter = " + pitHerdLitter + "\n");
+            writer.write("*Can throw litter = " + pitThrowLitter + "\n");
+            writer.write("*Can litter landfill = " + pitLitterLandfill + "\n");
+            writer.write("*Can put one tote on three = " + coopOneThree + "\n");
+            writer.write("*Can put three totes on one = " + coopThreeOne + "\n");
+            writer.write("*Set = " + pitSet + "\n");
+            writer.write("*Stack = " + pitStack + "\n");
             MessageBox("File Saved");
             writer.close();
         } else MessageBox("Please complete form");
