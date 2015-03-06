@@ -2,6 +2,7 @@ package com.example.simarpal.redalliancev262;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -17,14 +18,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
-import android.widget.Switch;
 import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-    Intent mainIntent;
-    Intent pitIntent ;
+public class home extends ActionBarActivity
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks , scoutingFragment.OnFragmentInteractionListener , pitScouting.OnFragmentInteractionListener {
+
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -38,7 +37,7 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -52,24 +51,27 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-
-        Fragment objFragment = null;
-        switch (position)
-        {
-            case 0:
-                objFragment = new scoutingFragment();
-               //MainActivity.this.startActivity(mainIntent);
-            break;
-            case 1:
-               // objFragment = new pitScouting();
-               // MainActivity.this.startActivity(pitIntent);
-
-        }
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
+        if(position == 0)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, PlaceholderFragment.newInstance(0))
+                    .commit();
+        }
+        if(position == 1)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, scoutingFragment.newInstance("1", "2"))
+                    .commit();
+        }
+        if(position == 2)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, pitScouting.newInstance("3","4"))
+                    .commit();
+        }
+
     }
 
     public void onSectionAttached(int number) {
@@ -81,8 +83,10 @@ public class MainActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_section2);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                        mTitle = getString(R.string.title_section3);
                 break;
+            case 4:
+                mTitle = getString(R.string.title_section4);
         }
     }
 
@@ -100,7 +104,7 @@ public class MainActivity extends ActionBarActivity
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.main, menu);
+            getMenuInflater().inflate(R.menu.home, menu);
             restoreActionBar();
             return true;
         }
@@ -120,6 +124,13 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+
+
     }
 
     /**
@@ -150,15 +161,16 @@ public class MainActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_scouting2, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
             return rootView;
         }
 
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
+            ((home) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+
         }
     }
 
