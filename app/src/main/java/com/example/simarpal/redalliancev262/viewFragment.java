@@ -42,6 +42,9 @@ public class viewFragment extends Fragment {
     TextView mainTextView;
     Button refreshButton;
     File []listFiles;
+    String teamFiles ="";
+    int hello[] = {};
+    String teamMatches;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -96,6 +99,7 @@ public class viewFragment extends Fragment {
         String filename = root.getPath() + File.separator + "Red Alliance";
         File folder = new File(filename);
         listFiles = folder.listFiles();
+
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,20 +108,48 @@ public class viewFragment extends Fragment {
             Log.d("a", listFiles[i].getName());
             String createdFileName = "Team " +teamText.getText().toString() + " Match " + matchText.getText().toString() +".txt";
             Log.d("A","Smart: "+ createdFileName);
-            if(listFiles[i].getName().equals(createdFileName) )
+
+            if(matchText.getText().toString().isEmpty()) {
+                for (int teamNumberFor = 0; teamNumberFor < 100; teamNumberFor++) {
+                    mainTextView.setText("Team " + teamText.getText().toString() + " Has competed in \n");
+                    Log.d("AAAA","AAA");
+                    for (int matchNumbers = 0; matchNumbers < 100; matchNumbers++) {
+                        if (listFiles[teamNumberFor].getName().toString().equals("Team " + teamText.getText().toString() + " Match " + matchNumbers + ".txt")) {
+                            teamFiles = teamFiles + "\n" + matchNumbers;
+
+                            //mainTextView.setText(teamFiles);
+
+                        }
+                    }
+
+
+
+                }
+
+                mainTextView.setText(teamFiles);
+
+            }
+            else if(listFiles[i].getName().equals(createdFileName) )
             {
+                mainTextView.setText("");
                 Log.d("a", "here");
                 try {
                     MessageBox("File Read");
                     BufferedReader br = new BufferedReader(new FileReader(listFiles[i]));
-                    String str = br.readLine();
-                    mainTextView.setText(str.toString());
-                    MessageBox(str);
+                    String  line;
+                    String lineStore = "";
+
+                    while((line = br.readLine()) != null)
+                    {
+                        lineStore = lineStore + " \n" +line;
+                        mainTextView.setText(lineStore);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }else{
                 Log.d("a", "if loop didn't work");
+
             }
         }
 
